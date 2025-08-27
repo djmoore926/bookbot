@@ -1,11 +1,14 @@
 from stats import *
 import sys
 
+# Write function to print report??
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python3 main.py <path_to_book>")
         sys.exit(1)
     path = sys.argv[1]
+
     text = get_book_text(path)
     num_words = get_book_words(text)
     stats = format_char_num(get_book_chars(text))
@@ -19,7 +22,7 @@ Analyzing book found at {path}...
 ------------ Word Count -------------
 Found {num_words} total words
 ---------- Character Count ----------""")
-    pull_values(trimmed_stats)
+    print_values(trimmed_stats)
     print("=================END================="
 )
 
@@ -29,7 +32,7 @@ def get_book_text(filepath):
     with open(filepath) as f:
         return f.read()
     
-def pull_values(stats):
+def print_values(stats):
     for item in stats:
         print(f'{item["char"]}: {item["num"]}')
 
